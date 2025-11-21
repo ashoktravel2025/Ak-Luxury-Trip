@@ -1,229 +1,108 @@
-<!-- ====== Premium Luxury Vehicles + Equipment Gallery ====== -->
-<style>
-/* Container */
-.gallery-wrap {
-  max-width: 1100px;
-  margin: 30px auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-  color: #fff;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
-
-/* Two-column layout: vehicles (left) + equipment (right) */
-.gallery-grid-layout {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 22px;
-  align-items: start;
-}
-
-/* Section titles */
-.section-title {
-  font-size: 22px;
-  margin: 0 0 14px 0;
-  letter-spacing: 0.2px;
-  color: #e9eef8;
-  font-weight: 700;
-}
-
-/* Vehicles grid */
-.vehicles-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
-
-/* Card */
-.card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
-  transition: transform .28s ease, box-shadow .28s ease;
-}
-
-/* Hover pop */
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(2,6,23,0.5);
-}
-
-/* Image */
-.card img {
-  display: block;
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-/* Label area */
-.card .label {
-  padding: 12px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.card .label h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* small badge */
-.card .badge {
-  background: linear-gradient(90deg,#8b5cf6,#06b6d4);
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* Equipment column - stacked */
-.equipment-column {
-  display: grid;
-  gap: 14px;
-}
-
-/* Equipment card slightly taller */
-.equipment-column .card img {
-  height: 120px;
-}
-
-/* Subtext */
-.subnote {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #cdd6e6;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .gallery-grid-layout {
-    grid-template-columns: 1fr;
-  }
-  .vehicles-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 520px) {
-  .vehicles-grid {
-    grid-template-columns: 1fr;
-  }
-  .card img {
-    height: 180px;
-  }
-}
-</style>
-
-<div class="gallery-wrap">
-
-  <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px;">
-    <h1 style="margin:0; font-size:26px; color:#fff;">Our Premium Fleet & Equipment</h1>
-    <div class="subnote">Luxury vehicles • Professional equipment</div>
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashok Travel – Vehicles & Equipment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 32px;
+    }
+    .gallery-section {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .placeholder {
+      width: 100%;
+      height: 150px;
+      background: #e0e0e0;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #555;
+    }
+    .title {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>  <h2>Our Premium Vehicles</h2>
+  <div class="gallery-section">
+    <div class="grid"><div class="card">
+    <div class="placeholder">Image</div>
+    <div class="title">Ertiga (4 Units)</div>
   </div>
 
-  <div class="gallery-grid-layout">
-
-    <!-- LEFT: Vehicles -->
-    <div>
-      <h2 class="section-title">Luxury Fleet</h2>
-
-      <div class="vehicles-grid">
-
-        <!-- Bolero Camper -->
-        <div class="card">
-          <img src="images/bolero.jpg" alt="Bolero Camper 4x4">
-          <div class="label">
-            <h3>Bolero Camper 4×4</h3>
-            <div class="badge">4x4</div>
-          </div>
-        </div>
-
-        <!-- Ertiga -->
-        <div class="card">
-          <img src="images/ertiga.jpg" alt="Ertiga">
-          <div class="label">
-            <h3>Ertiga</h3>
-            <div class="badge">MPV</div>
-          </div>
-        </div>
-
-        <!-- Innova Crysta -->
-        <div class="card">
-          <img src="images/innova.jpg" alt="Innova Crysta">
-          <div class="label">
-            <h3>Innova Crysta</h3>
-            <div class="badge">Premium</div>
-          </div>
-        </div>
-
-        <!-- Travel Tempo -->
-        <div class="card">
-          <img src="images/tempo.jpg" alt="Travel Tempo">
-          <div class="label">
-            <h3>Tempo Traveller</h3>
-            <div class="badge">Large</div>
-          </div>
-        </div>
-
-        <!-- Sedan -->
-        <div class="card">
-          <img src="images/sedan.jpg" alt="Sedan">
-          <div class="label">
-            <h3>Sedan</h3>
-            <div class="badge">Comfort</div>
-          </div>
-        </div>
-
-        <!-- (Optional extra placeholder if you want more cars) -->
-        <!-- You can duplicate any .card above and change src & text for more vehicles -->
-
-      </div>
-    </div>
-
-    <!-- RIGHT: Equipment Column -->
-    <aside>
-      <h2 class="section-title">Professional Equipment</h2>
-
-      <div class="equipment-column">
-
-        <div class="card">
-          <img src="images/videographer.jpg" alt="Videographer Camera">
-          <div class="label">
-            <h3>Videographer Camera</h3>
-            <div class="badge">4K</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="images/photographer.jpg" alt="Photographer Camera">
-          <div class="label">
-            <h3>Photographer Camera</h3>
-            <div class="badge">DSLR</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="images/drone.jpg" alt="Drone Camera">
-          <div class="label">
-            <h3>Drone Shoot Camera</h3>
-            <div class="badge">Aerial</div>
-          </div>
-        </div>
-
-        <div style="padding:12px; background:transparent; border-radius:10px;">
-          <div class="subnote">Tip: Upload all images to <strong>images/</strong> folder in your repo with the exact filenames listed above. After upload, your GitHub Pages site will show these automatically.</div>
-        </div>
-
-      </div>
-    </aside>
-
+  <div class="card">
+    <div class="placeholder">Image</div>
+    <div class="title">Sedan (2 Units)</div>
   </div>
+
+  <div class="card">
+    <div class="placeholder">Image</div>
+    <div class="title">Travel Tempo (1 Unit)</div>
+  </div>
+
+  <div class="card">
+    <div class="placeholder">Image</div>
+    <div class="title">Bolero Camper 4×4 Off-Road</div>
+  </div>
+
+  <div class="card">
+    <div class="placeholder">Image</div>
+    <div class="title">Innova Crysta (1 Unit)</div>
+  </div>
+
 </div>
-<!-- ====== End Gallery ====== -->
+
+  </div>  <h2>Professional Equipment</h2>
+  <div class="gallery-section">
+    <div class="grid"><div class="card">
+    <div class="placeholder">Image</div>
+    <div class="title">Videographer Camera</div>
+  </div>
+
+  <div class="card">
+    <div class="placeholder">Image</div>
+    <div class="title">Drone Camera</div>
+  </div>
+
+  <div class="card">
+    <div class="placeholder">Image</div>
+    <div class="title">Photographer Camera</div>
+  </div>
+
+</div>
+
+  </div></body>
+</html>
