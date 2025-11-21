@@ -1,259 +1,229 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ashok Travel — Luxe Journeys</title>
-  <meta name="description" content="Premium travel agency — curated luxury tours" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#04121b; --card:#071827; --muted:#98a8b9; --accent1:#7c3aed; --accent2:#06b6d4; --glass:rgba(255,255,255,0.04);
-      --maxw:1200px; --radius:18px;
-      --glass-2: rgba(255,255,255,0.03);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#eaf2fb;background:linear-gradient(180deg,#021018 0%, #041827 100%)}
-    .wrap{max-width:var(--maxw);margin:28px auto;padding:28px}
+<!-- ====== Premium Luxury Vehicles + Equipment Gallery ====== -->
+<style>
+/* Container */
+.gallery-wrap {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
 
-    /* header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:18px}
-    nav{display:flex;gap:16px;align-items:center}
-    nav a{color:rgba(255,255,255,0.9);text-decoration:none;padding:8px 12px;border-radius:10px; font-weight:600}
-    nav a:hover{background:var(--glass)}
-    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px 16px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700}
+/* Two-column layout: vehicles (left) + equipment (right) */
+.gallery-grid-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
 
-    /* hero */
-    .hero-wrap{display:grid;grid-template-columns:1fr 480px;gap:28px;margin-top:22px;align-items:center}
-    .hero-cta{padding:34px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(8px);box-shadow:0 12px 40px rgba(2,6,23,0.6)}
-    .hero-cta h1{font-size:40px;line-height:1.02;margin:0 0 12px 0}
-    .hero-cta p{color:var(--muted);margin:0 0 18px}
-    .search{display:flex;gap:12px}
-    .search input{flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf2fb}
-    .search button{padding:12px 16px;border-radius:12px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;font-weight:700}
+/* Section titles */
+.section-title {
+  font-size: 22px;
+  margin: 0 0 14px 0;
+  letter-spacing: 0.2px;
+  color: #e9eef8;
+  font-weight: 700;
+}
 
-    .visual{position:relative}
-    .hero-img{width:100%;height:420px;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(2,6,23,0.7);background-size:cover;background-position:center;display:flex;align-items:flex-end}
-    .overlay-card{position:absolute;left:28px;bottom:28px;background:linear-gradient(180deg, rgba(4,10,18,0.85), rgba(4,10,18,0.65));padding:18px;border-radius:14px;width:86%;backdrop-filter: blur(6px)}
-    .overlay-card h3{margin:0;color:#fff}
-    .stars{color:#f6c84c;margin-top:6px}
+/* Vehicles grid */
+.vehicles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
 
-    /* sections */
-    section{margin-top:36px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,0.45)}
-    .card h4{margin:0 0 8px}
-    .card p{color:var(--muted);margin:0}
-    .price{margin-top:12px;font-weight:700}
+/* Card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
 
-    /* gallery */
-    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
-    .gallery .g{height:140px;border-radius:12px;background-size:cover;background-position:center;box-shadow:0 8px 20px rgba(2,6,23,0.4)}
+/* Hover pop */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.5);
+}
 
-    /* fleet */
-    .fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .fleet-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;box-shadow:0 14px 40px rgba(2,6,23,0.45);display:flex;flex-direction:column;gap:10px}
-    .fleet-img{height:160px;border-radius:10px;background-size:cover;background-position:center;box-shadow:inset 0 -20px 60px rgba(0,0,0,0.2)}
-    .fleet-meta{display:flex;justify-content:space-between;align-items:center}
-    .badge{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:6px 10px;border-radius:10px;color:#fff;font-weight:700;font-size:13px}
+/* Image */
+.card img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
 
-    /* contact */
-    .contact{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:20px}
-    .form input,.form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf2fb;margin-bottom:8px}
-    .form button{padding:12px 14px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:10px;border:0;color:#fff}
+/* Label area */
+.card .label {
+  padding: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
 
-    footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center;padding-bottom:20px}
+.card .label h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
 
-    /* responsive */
-    @media(max-width:980px){.hero-wrap{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,1fr)}.fleet-grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}.contact{grid-template-columns:1fr}}
-    @media(max-width:520px){nav{display:none}.hero-cta h1{font-size:22px}.fleet-grid{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">AT</div>
-        <div>
-          <div style="font-weight:800">Ashok Travel</div>
-          <div style="color:var(--muted);font-size:13px">Luxe Journeys • Curated Experiences</div>
-        </div>
-      </div>
+/* small badge */
+.card .badge {
+  background: linear-gradient(90deg,#8b5cf6,#06b6d4);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
 
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#packages">Packages</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#fleet">Fleet</a>
-        <a href="#contact">Contact</a>
-        <a class="btn-primary" href="#contact">Book Now</a>
-      </nav>
-    </header>
+/* Equipment column - stacked */
+.equipment-column {
+  display: grid;
+  gap: 14px;
+}
 
-    <main>
-      <!-- HERO -->
-      <section class="hero-wrap" id="home">
-        <div class="hero-cta fade-up" style="animation-delay:.1s">
-          <h1>Discover journeys designed for the few who seek the extraordinary</h1>
-          <p class="muted">Bespoke itineraries, private transfers, expert local guides — every detail perfected.</p>
+/* Equipment card slightly taller */
+.equipment-column .card img {
+  height: 120px;
+}
 
-          <div class="search">
-            <input id="q" placeholder="Search destination, e.g. Maldives, Alps" />
-            <button id="searchBtn">Search</button>
-          </div>
+/* Subtext */
+.subnote {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #cdd6e6;
+}
 
-          <div style="display:flex;gap:12px;margin-top:18px;align-items:center">
-            <div style="background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:10px">⭐ 4.9 (3.6k)</div>
-            <div style="color:var(--muted)">Exclusive picks: Maldives, Swiss Alps, Tanzania</div>
-          </div>
-        </div>
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery-grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .vehicles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .vehicles-grid {
+    grid-template-columns: 1fr;
+  }
+  .card img {
+    height: 180px;
+  }
+}
+</style>
 
-        <div class="visual fade-up" style="animation-delay:.2s">
-          <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80')">
-            <div class="overlay-card">
-              <h3>Private villa stays • Curated excursions • Luxury transfers</h3>
-              <div class="stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
-      </section>
+<div class="gallery-wrap">
 
-      <!-- PACKAGES -->
-      <section id="packages" class="section">
-        <h2>Featured Luxury Packages</h2>
-        <div class="grid-3">
-          <div class="card fade-up" style="animation-delay:.25s">
-            <h4>Maldives Paradise</h4>
-            <p class="muted">7 nights • Private villa • Seaplane transfer</p>
-            <div class="price">Starting ₹2,49,999</div>
-          </div>
-
-          <div class="card fade-up" style="animation-delay:.3s">
-            <h4>European Grand Tour</h4>
-            <p class="muted">12 days • Luxury hotels • Private guide</p>
-            <div class="price">Starting ₹4,99,999</div>
-          </div>
-
-          <div class="card fade-up" style="animation-delay:.35s">
-            <h4>Safari & Islands</h4>
-            <p class="muted">10 days • Safari lodge • Beach extension</p>
-            <div class="price">Starting ₹3,99,999</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- GALLERY -->
-      <section id="gallery" class="section">
-        <h2>Gallery</h2>
-        <div class="gallery">
-          <div class="g" style="background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80')"></div>
-          <div class="g" style="background-image:url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=800&q=80')"></div>
-          <div class="g" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80')"></div>
-          <div class="g" style="background-image:url('https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=800&q=80')"></div>
-        </div>
-      </section>
-
-      <!-- FLEET / VEHICLES -->
-      <section id="fleet" class="section">
-        <h2>Our Premium Fleet & Equipment</h2>
-        <p style="text-align:center;color:var(--muted);margin-top:6px">Camera kits, off-road campers, comfortable sedans — handpicked for every trip.</p>
-
-        <div class="fleet-grid" style="margin-top:18px">
-          <!-- Bolero Camper 4x4 -->
-          <div class="fleet-card fade-up">
-            <div class="fleet-img" style="background-image:url('https://images.unsplash.com/photo-1549921296-3d4b9e7b2a54?auto=format&fit=crop&w=1200&q=80')"></div>
-            <h4>Bolero Camper 4×4</h4>
-            <p class="muted">Rugged off-road vehicle — ideal for mountains & remote shoots.</p>
-            <div class="fleet-meta"><div class="badge">Off-road Ready</div><div>Seats: 5+</div></div>
-          </div>
-
-          <!-- Tempo Traveller -->
-          <div class="fleet-card fade-up">
-            <div class="fleet-img" style="background-image:url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80')"></div>
-            <h4>Tempo Traveller</h4>
-            <p class="muted">Spacious group travel — AC options available.</p>
-            <div class="fleet-meta"><div class="badge">Group Tours</div><div>Seats: 12–17</div></div>
-          </div>
-
-          <!-- Ertiga -->
-          <div class="fleet-card fade-up">
-            <div class="fleet-img" style="background-image:url('https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=80')"></div>
-            <h4>Maruti Ertiga</h4>
-            <p class="muted">Comfortable family travel — 2 units available.</p>
-            <div class="fleet-meta"><div class="badge">Family</div><div>Units: 2</div></div>
-          </div>
-
-          <!-- Dzire -->
-          <div class="fleet-card fade-up">
-            <div class="fleet-img" style="background-image:url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1200&q=80')"></div>
-            <h4>Swift / Dzire</h4>
-            <p class="muted">City & highway travel — 2 units for quick transfers.</p>
-            <div class="fleet-meta"><div class="badge">City Rides</div><div>Units: 2</div></div>
-          </div>
-
-          <!-- Videography 4K -->
-          <div class="fleet-card fade-up">
-            <div class="fleet-img" style="background-image:url('https://images.unsplash.com/photo-1519183071298-a2962be54a47?auto=format&fit=crop&w=1200&q=80')"></div>
-            <h4>Videography — 4K Camera Kit</h4>
-            <p class="muted">Professional 4K cameras, gimbals, and accessories for cinematic footage.</p>
-            <div class="fleet-meta"><div class="badge">Pro Gear</div><div>Includes drone</div></div>
-          </div>
-
-          <!-- Drone -->
-          <div class="fleet-card fade-up">
-            <div class="fleet-img" style="background-image:url('https://images.unsplash.com/photo-1504198266284-1659872e6590?auto=format&fit=crop&w=1200&q=80')"></div>
-            <h4>Aerial Drone (4K)</h4>
-            <p class="muted">Stabilized aerial shots for landscapes and group photos.</p>
-            <div class="fleet-meta"><div class="badge">Aerial</div><div>Certified Pilot</div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="section">
-        <h2>Contact & Booking</h2>
-        <div class="contact">
-          <div class="form card fade-up">
-            <input id="name" placeholder="Your name" />
-            <input id="email" placeholder="Email or phone" />
-            <input id="what" placeholder="Which package / query" />
-            <textarea id="msg" rows="4" placeholder="Message"></textarea>
-            <button onclick="submitForm()">Send enquiry</button>
-          </div>
-
-          <div class="card fade-up" style="display:flex;flex-direction:column;gap:8px;justify-content:center">
-            <h4>Office</h4>
-            <p class="muted">Phone: +91-XXXXXXXXXX</p>
-            <p class="muted">Email: contact@ashoktravel.com</p>
-            <p class="muted">Address: Sample street, City, Country</p>
-            <a class="btn-primary" href="#">Request a Callback</a>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div style="padding:18px 0">© 2025 Ashok Travel — Designed for discerning travellers</div>
-    </footer>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px;">
+    <h1 style="margin:0; font-size:26px; color:#fff;">Our Premium Fleet & Equipment</h1>
+    <div class="subnote">Luxury vehicles • Professional equipment</div>
   </div>
 
-  <script>
-    // interactions
-    document.getElementById('searchBtn').addEventListener('click', ()=>{
-      const q=document.getElementById('q').value || 'Top destinations';
-      alert('Searching premium packages for: ' + q);
-    });
-    function submitForm(){
-      const nm=document.getElementById('name').value || 'Guest';
-      const what=document.getElementById('what').value || 'General';
-      alert('Thanks '+nm+' — we received your enquiry for '+what+'. We will contact you soon.');
-    }
+  <div class="gallery-grid-layout">
 
-    // reveal animations
-    window.addEventListener('load', ()=>{document.querySelectorAll('.fade-up').forEach((el,i)=>{el.style.animationDelay = (i*0.06)+'s';el.style.animationPlayState='running'})})
-  </script>
-</body>
-</html>
+    <!-- LEFT: Vehicles -->
+    <div>
+      <h2 class="section-title">Luxury Fleet</h2>
+
+      <div class="vehicles-grid">
+
+        <!-- Bolero Camper -->
+        <div class="card">
+          <img src="images/bolero.jpg" alt="Bolero Camper 4x4">
+          <div class="label">
+            <h3>Bolero Camper 4×4</h3>
+            <div class="badge">4x4</div>
+          </div>
+        </div>
+
+        <!-- Ertiga -->
+        <div class="card">
+          <img src="images/ertiga.jpg" alt="Ertiga">
+          <div class="label">
+            <h3>Ertiga</h3>
+            <div class="badge">MPV</div>
+          </div>
+        </div>
+
+        <!-- Innova Crysta -->
+        <div class="card">
+          <img src="images/innova.jpg" alt="Innova Crysta">
+          <div class="label">
+            <h3>Innova Crysta</h3>
+            <div class="badge">Premium</div>
+          </div>
+        </div>
+
+        <!-- Travel Tempo -->
+        <div class="card">
+          <img src="images/tempo.jpg" alt="Travel Tempo">
+          <div class="label">
+            <h3>Tempo Traveller</h3>
+            <div class="badge">Large</div>
+          </div>
+        </div>
+
+        <!-- Sedan -->
+        <div class="card">
+          <img src="images/sedan.jpg" alt="Sedan">
+          <div class="label">
+            <h3>Sedan</h3>
+            <div class="badge">Comfort</div>
+          </div>
+        </div>
+
+        <!-- (Optional extra placeholder if you want more cars) -->
+        <!-- You can duplicate any .card above and change src & text for more vehicles -->
+
+      </div>
+    </div>
+
+    <!-- RIGHT: Equipment Column -->
+    <aside>
+      <h2 class="section-title">Professional Equipment</h2>
+
+      <div class="equipment-column">
+
+        <div class="card">
+          <img src="images/videographer.jpg" alt="Videographer Camera">
+          <div class="label">
+            <h3>Videographer Camera</h3>
+            <div class="badge">4K</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/photographer.jpg" alt="Photographer Camera">
+          <div class="label">
+            <h3>Photographer Camera</h3>
+            <div class="badge">DSLR</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/drone.jpg" alt="Drone Camera">
+          <div class="label">
+            <h3>Drone Shoot Camera</h3>
+            <div class="badge">Aerial</div>
+          </div>
+        </div>
+
+        <div style="padding:12px; background:transparent; border-radius:10px;">
+          <div class="subnote">Tip: Upload all images to <strong>images/</strong> folder in your repo with the exact filenames listed above. After upload, your GitHub Pages site will show these automatically.</div>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+</div>
+<!-- ====== End Gallery ====== -->
