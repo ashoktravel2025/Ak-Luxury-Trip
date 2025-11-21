@@ -1,183 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AK Luxury Trip</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AK Luxury Trip</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f5f5f5;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center center/cover;
+    height: 100vh;
+    color: white;
+}
 
-        /* Navbar */
-        .navbar {
-            background: black;
-            padding: 18px;
-            text-align: center;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 18px;
-            font-size: 18px;
-            font-weight: bold;
-        }
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+    padding: 18px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(6px);
+}
 
-        /* Header */
-        .header {
-            background: url('header.jpg') center/cover no-repeat;
-            height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 36px;
-            font-weight: bold;
-            text-shadow: 0px 0px 10px black;
-        }
+.navbar a {
+    color: white;
+    margin: 0 25px;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
 
-        /* Section title */
-        .section-title {
-            font-size: 28px;
-            text-align: center;
-            margin-top: 30px;
-            font-weight: bold;
-        }
+.navbar a:hover {
+    color: #ffd700;
+}
 
-        /* Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
+/* HERO SECTION */
+.hero {
+    margin-top: 120px;
+    text-align: center;
+}
 
-        /* Vehicle Cards */
-        .card {
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0px 0px 10px #bbb;
-            text-align: center;
-        }
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        .card h3 {
-            margin-top: 10px;
-            font-size: 22px;
-        }
+.hero h1 {
+    font-size: 52px;
+    font-weight: 700;
+    text-shadow: 3px 3px 10px #000;
+}
 
-        /* Footer */
-        .footer {
-            background: black;
-            color: white;
-            padding: 12px;
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
+.hero p {
+    font-size: 22px;
+    margin-top: 15px;
+    text-shadow: 2px 2px 10px #000;
+}
 
+/* BUTTON */
+.btn {
+    margin-top: 40px;
+    padding: 15px 35px;
+    background: #ffd700;
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 15px #000;
+}
+
+.btn:hover {
+    background: white;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="#vehicles">Vehicles</a>
-        <a href="#camera">Camera Setup</a>
-        <a href="vehicle.html">Vehicle Gallery</a>
-    </div>
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="camera.html">Camera Setup</a>
+    <a href="vehicles.html">Vehicles</a>
+</div>
 
-    <!-- Header -->
-    <div class="header">
-        AK Luxury Trip
-    </div>
+<div class="hero">
+    <h1>AK Luxury Trip</h1>
+    <p>Explore Jaisalmer with Premium Luxury Experience</p>
 
-    <!-- Vehicles Section -->
-    <h2 class="section-title" id="vehicles">🚘 Our Premium Vehicles</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <img src="images/ertiga1.jpg" alt="Ertiga">
-            <h3>Ertiga – 1</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/ertiga2.jpg" alt="Ertiga">
-            <h3>Ertiga – 2</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/ertiga3.jpg" alt="Ertiga">
-            <h3>Ertiga – 3</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/ertiga4.jpg" alt="Ertiga">
-            <h3>Ertiga – 4</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/sedan1.jpg" alt="Sedan">
-            <h3>Sedan – 1</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/sedan2.jpg" alt="Sedan">
-            <h3>Sedan – 2</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/tempo.jpg" alt="Tempo Traveller">
-            <h3>Travel Tempo Traveller</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/bolero.jpg" alt="Bolero Camper">
-            <h3>Bolero Camper 4x4 Off-Roading</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/innova.jpg" alt="Innova Crysta">
-            <h3>Innova Crysta</h3>
-        </div>
-
-    </div>
-
-    <!-- Camera Section -->
-    <h2 class="section-title" id="camera">📸 Camera Setup</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <img src="images/videocam.jpg" alt="Videographer Camera">
-            <h3>Video Grapher Camera</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/drone.jpg" alt="Drone Camera">
-            <h3>Drone Camera</h3>
-        </div>
-
-        <div class="card">
-            <img src="images/photo.jpg" alt="Photographer Camera">
-            <h3>Photo Grapher Camera</h3>
-        </div>
-
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        © 2025 AK Luxury Trip – All Rights Reserved
-    </div>
+    <a class="btn" href="vehicles.html">View Vehicles</a>
+</div>
 
 </body>
 </html>
